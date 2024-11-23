@@ -5,7 +5,7 @@ import { SearchAndFilter } from "@/components/SearchAndFilter";
 import { MarketOverview } from "@/components/MarketOverview";
 import { Portfolio } from "@/components/Portfolio";
 import { PriceAlert } from "@/components/PriceAlert";
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { useToast } from "@/components/ui/use-toast";
 
 const Index = () => {
