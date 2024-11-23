@@ -1,11 +1,38 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { useQuery } from '@tanstack/react-query';
+import { getTopAssets } from '@/lib/api';
+import { AssetCard } from '@/components/AssetCard';
+import { useToast } from '@/components/ui/use-toast';
 
 const Index = () => {
+  const { toast } = useToast();
+  const { data: assets, error, isLoading } = useQuery({
+    queryKey: ['assets'],
+    queryFn: getTopAssets,
+    refetchInterval: 30000,
+    onError: () => {
+      toast({
+        title: "Error",
+        description: "Failed to fetch cryptocurrency data",
+        variant: "destructive"
+      });
+    }
+  });
+
+  if (isLoading) {
+    return (
+      <div className="container py-8">
+        <h1 className="text-4xl font-bold mb-8">Loading...</h1>
+      </div>
+    );
+  }
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-gray-600">Start building your amazing project here!</p>
+    <div className="container py-8">
+      <h1 className="text-4xl font-bold mb-8">Top Cryptocurrencies</h1>
+      <div className="grid gap-4 md:grid-cols-2">
+        {assets?.map((asset) => (
+          <AssetCard key={asset.id} asset={asset} />
+        ))}
       </div>
     </div>
   );

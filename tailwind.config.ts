@@ -53,10 +53,16 @@ export default {
           foreground: "hsl(var(--card-foreground))",
         },
       },
-      borderRadius: {
-        lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
+      fontFamily: {
+        'space-mono': ['Space Mono', 'monospace'],
+        'inter': ['Inter', 'sans-serif'],
+      },
+      borderWidth: {
+        '3': '3px',
+      },
+      boxShadow: {
+        'brutal': '8px 8px 0px 0px #000000',
+        'brutal-sm': '4px 4px 0px 0px #000000',
       },
       keyframes: {
         "accordion-down": {
