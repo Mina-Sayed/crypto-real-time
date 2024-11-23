@@ -9,12 +9,14 @@ const Index = () => {
     queryKey: ['assets'],
     queryFn: getTopAssets,
     refetchInterval: 30000,
-    onError: () => {
-      toast({
-        title: "Error",
-        description: "Failed to fetch cryptocurrency data",
-        variant: "destructive"
-      });
+    meta: {
+      onError: () => {
+        toast({
+          title: "Error",
+          description: "Failed to fetch cryptocurrency data",
+          variant: "destructive"
+        });
+      }
     }
   });
 

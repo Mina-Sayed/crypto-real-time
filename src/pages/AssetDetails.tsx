@@ -13,12 +13,14 @@ const AssetDetails = () => {
     queryKey: ['asset', id],
     queryFn: () => getAssetDetails(id!),
     enabled: !!id,
-    onError: () => {
-      toast({
-        title: "Error",
-        description: "Failed to fetch asset details",
-        variant: "destructive"
-      });
+    meta: {
+      onError: () => {
+        toast({
+          title: "Error",
+          description: "Failed to fetch asset details",
+          variant: "destructive"
+        });
+      }
     }
   });
 
@@ -26,12 +28,14 @@ const AssetDetails = () => {
     queryKey: ['assetHistory', id],
     queryFn: () => getAssetHistory(id!, 'h1'),
     enabled: !!id,
-    onError: () => {
-      toast({
-        title: "Error",
-        description: "Failed to fetch price history",
-        variant: "destructive"
-      });
+    meta: {
+      onError: () => {
+        toast({
+          title: "Error",
+          description: "Failed to fetch price history",
+          variant: "destructive"
+        });
+      }
     }
   });
 
