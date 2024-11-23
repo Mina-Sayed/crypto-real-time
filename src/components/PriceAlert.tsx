@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Asset } from "@/lib/api";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -49,25 +49,27 @@ export const PriceAlert = ({ assets }: { assets: Asset[] }) => {
     setAlerts(newAlerts);
   };
 
-  // Check alerts against current prices
-  assets.forEach((asset) => {
-    alerts.forEach((alert) => {
-      if (alert.assetId === asset.id) {
-        const currentPrice = parseFloat(asset.priceUsd);
-        if (
-          (alert.isAbove && currentPrice >= alert.targetPrice) ||
-          (!alert.isAbove && currentPrice <= alert.targetPrice)
-        ) {
-          toast({
-            title: "Price Alert!",
-            description: `${asset.name} has ${
-              alert.isAbove ? "reached" : "fallen to"
-            } ${alert.targetPrice}`,
-          });
+  // Check alerts against current prices using useEffect
+  useEffect(() => {
+    assets.forEach((asset) => {
+      alerts.forEach((alert) => {
+        if (alert.assetId === asset.id) {
+          const currentPrice = parseFloat(asset.priceUsd);
+          if (
+            (alert.isAbove && currentPrice >= alert.targetPrice) ||
+            (!alert.isAbove && currentPrice <= alert.targetPrice)
+          ) {
+            toast({
+              title: "Price Alert!",
+              description: `${asset.name} has ${
+                alert.isAbove ? "reached" : "fallen to"
+              } ${alert.targetPrice}`,
+            });
+          }
         }
-      }
+      });
     });
-  });
+  }, [assets, alerts, toast]);
 
   return (
     <div className="neo-brutalist-card p-4 mb-8">
