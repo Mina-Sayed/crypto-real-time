@@ -3,7 +3,9 @@ import { getTopAssets } from "@/lib/api";
 import { AssetCard } from "@/components/AssetCard";
 import { SearchAndFilter } from "@/components/SearchAndFilter";
 import { MarketOverview } from "@/components/MarketOverview";
-import { useState, useMemo } from "react";
+import { Portfolio } from "@/components/Portfolio";
+import { PriceAlert } from "@/components/PriceAlert";
+import { useState } from "react";
 import { useToast } from "@/components/ui/use-toast";
 
 const Index = () => {
@@ -80,6 +82,13 @@ const Index = () => {
       <h1 className="text-4xl font-bold mb-8">Top Cryptocurrencies</h1>
       
       <MarketOverview />
+      
+      {assets && (
+        <>
+          <Portfolio assets={assets} />
+          <PriceAlert assets={assets} />
+        </>
+      )}
       
       <SearchAndFilter
         onSearchChange={setSearch}
