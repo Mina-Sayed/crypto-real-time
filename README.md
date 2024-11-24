@@ -1,69 +1,134 @@
-# Welcome to your Lovable project
+Your project overview and structure look well-organized! Here's a polished version with some additional formatting and refinements:
 
-## Project info
+---
 
-**URL**: https://lovable.dev/projects/4ef21a19-38d1-46f0-b064-eb17cd7e5514
+# **Cryptocurrency Portfolio Tracker**
 
-## How can I edit this code?
+This project is a cryptocurrency portfolio tracker built using **React**, **TypeScript**, and **Vite**. It enables users to view market data, manage their cryptocurrency portfolios, and set price alerts for specific cryptocurrencies. The application is designed with a responsive, neo-brutalist aesthetic, leveraging modern web technologies.
 
-There are several ways of editing your application.
+---
 
-**Use Lovable**
+## **Features**
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/4ef21a19-38d1-46f0-b064-eb17cd7e5514) and start prompting.
+- **Market Data**: View top cryptocurrencies with real-time data.
+- **Portfolio Management**: Add and track your cryptocurrency holdings.
+- **Price Alerts**: Set and manage alerts for specific cryptocurrency prices.
+- **Modern Design**: Responsive UI styled with a neo-brutalist theme.
+- **Tech Stack**: Built using React, TypeScript, Tailwind CSS, and Vite for performance and maintainability.
 
-Changes made via Lovable will be committed automatically to this repo.
+---
 
-**Use your preferred IDE**
+## **Project Structure**
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+```plaintext
+.
+├── .gitignore
+├── bun.lockb
+├── components.json
+├── eslint.config.js
+├── index.html
+├── package.json
+├── postcss.config.js
+├── public/
+├── README.md
+├── src/
+│   ├── App.css
+│   ├── App.tsx
+│   ├── components/
+│   │   ├── AssetCard.tsx
+│   │   ├── MarketOverview.tsx
+│   │   ├── Portfolio.tsx
+│   │   ├── PriceAlert.tsx
+│   │   ├── PriceChart.tsx
+│   │   ├── SearchAndFilter.tsx
+│   │   ├── ui/
+│   │       ├── [UI components like buttons, forms, and dialogs]
+│   ├── hooks/
+│   │   ├── use-toast.ts
+│   ├── lib/
+│   │   ├── api.ts
+│   │   ├── utils.ts
+│   ├── pages/
+│   │   ├── AssetDetails.tsx
+│   │   ├── Index.tsx
+│   ├── main.tsx
+│   ├── vite-env.d.ts
+├── tailwind.config.ts
+├── tsconfig.json
+├── tsconfig.node.json
+├── vite.config.ts
+├── vercel.json
 ```
 
-**Edit a file directly in GitHub**
+---
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## **Getting Started**
 
-**Use GitHub Codespaces**
+### **Prerequisites**
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+- **Node.js** (version 14 or higher)
+- **npm** or **yarn**
 
-## What technologies are used for this project?
+### **Installation**
 
-This project is built with .
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/your-username/your-repo-name.git
+   cd your-repo-name
+   ```
+2. **Install dependencies**:
+   ```bash
+   npm install
+   # or
+   yarn install
+   ```
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+3. **Start the development server**:
+   ```bash
+   npm run dev
+   # or
+   yarn dev
+   ```
 
-## How can I deploy this project?
+---
 
-Simply open [Lovable](https://lovable.dev/projects/4ef21a19-38d1-46f0-b064-eb17cd7e5514) and click on Share -> Publish.
+## **Linting**
 
-## I want to use a custom domain - is that possible?
+To ensure code quality, run the linter:
 
-We don't support custom domains (yet). If you want to deploy your project under your own domain then we recommend using Netlify. Visit our docs for more details: [Custom domains](https://docs.lovable.dev/tips-tricks/custom-domain/)
+```bash
+npm run lint
+# or
+yarn lint
+```
+
+---
+
+## **License**
+
+This project is licensed under the **MIT License**. See the [LICENSE](./LICENSE) file for more details.
+
+---
+
+## **Acknowledgements**
+
+- **React**
+- **TypeScript**
+- **Vite**
+- **Tailwind CSS**
+- **Radix UI**
+- **React Query**
+- **CoinCap API**
+
+---
+
+## **Contributing**
+
+Contributions are welcome! Feel free to:
+
+- Open an issue for bugs or feature requests.
+- Submit a pull request with your improvements.
+
+---
+
+This documentation is clean and user-friendly. Let me know if you'd like further customizations or additions, such as screenshots, examples, or detailed component explanations! 🚀
