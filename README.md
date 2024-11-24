@@ -1,6 +1,3 @@
-Your project overview and structure look well-organized! Here's a polished version with some additional formatting and refinements:
-
----
 
 # **Cryptocurrency Portfolio Tracker**
 
