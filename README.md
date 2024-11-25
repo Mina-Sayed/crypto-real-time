@@ -1,4 +1,3 @@
-
 # **Cryptocurrency Portfolio Tracker**
 
 This project is a cryptocurrency portfolio tracker built using **React**, **TypeScript**, and **Vite**. It enables users to view market data, manage their cryptocurrency portfolios, and set price alerts for specific cryptocurrencies. The application is designed with a responsive, neo-brutalist aesthetic, leveraging modern web technologies.
@@ -45,14 +44,17 @@ This project is a cryptocurrency portfolio tracker built using **React**, **Type
 │   ├── lib/
 │   │   ├── api.ts
 │   │   ├── utils.ts
+│   │   ├── redis.ts
 │   ├── pages/
 │   │   ├── AssetDetails.tsx
 │   │   ├── Index.tsx
 │   ├── main.tsx
+│   ├── server.ts
 │   ├── vite-env.d.ts
 ├── tailwind.config.ts
 ├── tsconfig.json
 ├── tsconfig.node.json
+├── tsconfig.app.json
 ├── vite.config.ts
 ├── vercel.json
 ```
@@ -65,6 +67,7 @@ This project is a cryptocurrency portfolio tracker built using **React**, **Type
 
 - **Node.js** (version 14 or higher)
 - **npm** or **yarn**
+- **Redis** (for caching)
 
 ### **Installation**
 
@@ -85,6 +88,13 @@ This project is a cryptocurrency portfolio tracker built using **React**, **Type
    npm run dev
    # or
    yarn dev
+   ```
+
+4. **Start the backend server**:
+   ```bash
+   npm run start:server
+   # or
+   yarn start:server
    ```
 
 ---
