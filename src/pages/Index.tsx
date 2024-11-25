@@ -7,6 +7,7 @@ import { Portfolio } from "@/components/Portfolio";
 import { PriceAlert } from "@/components/PriceAlert";
 import { useState, useMemo } from "react";
 import { useToast } from "@/components/ui/use-toast";
+import { handleError } from "@/lib/utils";
 
 const Index = () => {
   const { toast } = useToast();
@@ -18,14 +19,13 @@ const Index = () => {
     queryKey: ["assets"],
     queryFn: getTopAssets,
     refetchInterval: 30000,
-    meta: {
-      onError: () => {
-        toast({
-          title: "Error",
-          description: "Failed to fetch cryptocurrency data",
-          variant: "destructive",
-        });
-      },
+    onError: (error) => {
+      handleError(error);
+      toast({
+        title: "Error",
+        description: "Failed to fetch cryptocurrency data",
+        variant: "destructive",
+      });
     },
   });
 

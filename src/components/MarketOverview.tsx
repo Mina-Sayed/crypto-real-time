@@ -1,6 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { formatCurrency } from "@/lib/utils";
+import { useToast } from "@/components/ui/use-toast";
+import { handleError } from "@/lib/utils";
 
 interface GlobalData {
   totalMarketCap: string;
@@ -9,7 +11,9 @@ interface GlobalData {
 }
 
 export const MarketOverview = () => {
-  const { data: globalData } = useQuery({
+  const { toast } = useToast();
+
+  const { data: globalData, error } = useQuery({
     queryKey: ["globalData"],
     queryFn: async () => {
       const response = await axios.get("https://api.coincap.io/v2/global");
@@ -21,7 +25,24 @@ export const MarketOverview = () => {
       };
     },
     refetchInterval: 30000,
+    onError: (error) => {
+      handleError(error);
+      toast({
+        title: "Error",
+        description: "Failed to fetch market data",
+        variant: "destructive"
+      });
+    }
   });
+
+  if (error) {
+    return (
+      <div className="neo-brutalist-card p-4 mb-8">
+        <h2 className="text-xl font-space-mono mb-4">Market Overview</h2>
+        <p className="text-red-600">Market data is currently unavailable. Please try again later.</p>
+      </div>
+    );
+  }
 
   if (!globalData) return null;
 

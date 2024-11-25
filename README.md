@@ -99,6 +99,26 @@ This project is a cryptocurrency portfolio tracker built using **React**, **Type
 
 ---
 
+## **Integrating the Frontend with the Backend**
+
+To integrate the backend API with the frontend, follow these steps:
+
+1. **Ensure the backend API is running and accessible**. The backend API endpoints are defined in the controllers such as `src/controllers/marketDataController.ts`, `src/controllers/portfolioController.ts`, and `src/controllers/priceAlertController.ts`.
+
+2. **Use the `axios` library to make HTTP requests to the backend API**. The `axios` instance is already configured in `src/lib/api.ts`.
+
+3. **Use React Query to manage the data fetching and caching**. The `QueryClient` and `QueryClientProvider` are set up in `src/App.tsx`.
+
+4. **Create custom hooks or functions to fetch data from the backend API**. For example, `getTopAssets`, `getAssetHistory`, and `getAssetDetails` are defined in `src/lib/api.ts`.
+
+5. **Use these hooks or functions in your React components to fetch and display data**. For example, the `MarketOverview` component in `src/components/MarketOverview.tsx` uses the `useQuery` hook to fetch global market data.
+
+6. **Handle errors and loading states appropriately in your components**. For example, the `AssetDetails` component in `src/pages/AssetDetails.tsx` shows a loading message while fetching data and displays an error message if the fetch fails.
+
+7. **Ensure the frontend and backend are properly connected by testing the integration and verifying that data is being fetched and displayed correctly**.
+
+---
+
 ## **Linting**
 
 To ensure code quality, run the linter:
