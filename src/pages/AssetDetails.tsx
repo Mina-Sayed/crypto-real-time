@@ -2,7 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import { useParams } from 'react-router-dom';
 import { getAssetDetails, getAssetHistory } from '@/lib/api';
 import { PriceChart } from '@/components/PriceChart';
-import { formatCurrency } from '@/lib/utils';
+import { formatCurrency, handleError } from '@/lib/utils';
 import { useToast } from '@/components/ui/use-toast';
 
 const AssetDetails = () => {
@@ -13,14 +13,13 @@ const AssetDetails = () => {
     queryKey: ['asset', id],
     queryFn: () => getAssetDetails(id!),
     enabled: !!id,
-    meta: {
-      onError: () => {
-        toast({
-          title: "Error",
-          description: "Failed to fetch asset details",
-          variant: "destructive"
-        });
-      }
+    onError: (error) => {
+      handleError(error);
+      toast({
+        title: "Error",
+        description: "Failed to fetch asset details",
+        variant: "destructive"
+      });
     }
   });
 
@@ -28,14 +27,13 @@ const AssetDetails = () => {
     queryKey: ['assetHistory', id],
     queryFn: () => getAssetHistory(id!, 'h1'),
     enabled: !!id,
-    meta: {
-      onError: () => {
-        toast({
-          title: "Error",
-          description: "Failed to fetch price history",
-          variant: "destructive"
-        });
-      }
+    onError: (error) => {
+      handleError(error);
+      toast({
+        title: "Error",
+        description: "Failed to fetch price history",
+        variant: "destructive"
+      });
     }
   });
 

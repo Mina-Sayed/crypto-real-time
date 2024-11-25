@@ -1,4 +1,3 @@
-
 # **Cryptocurrency Portfolio Tracker**
 
 This project is a cryptocurrency portfolio tracker built using **React**, **TypeScript**, and **Vite**. It enables users to view market data, manage their cryptocurrency portfolios, and set price alerts for specific cryptocurrencies. The application is designed with a responsive, neo-brutalist aesthetic, leveraging modern web technologies.
@@ -45,14 +44,17 @@ This project is a cryptocurrency portfolio tracker built using **React**, **Type
 │   ├── lib/
 │   │   ├── api.ts
 │   │   ├── utils.ts
+│   │   ├── redis.ts
 │   ├── pages/
 │   │   ├── AssetDetails.tsx
 │   │   ├── Index.tsx
 │   ├── main.tsx
+│   ├── server.ts
 │   ├── vite-env.d.ts
 ├── tailwind.config.ts
 ├── tsconfig.json
 ├── tsconfig.node.json
+├── tsconfig.app.json
 ├── vite.config.ts
 ├── vercel.json
 ```
@@ -65,6 +67,7 @@ This project is a cryptocurrency portfolio tracker built using **React**, **Type
 
 - **Node.js** (version 14 or higher)
 - **npm** or **yarn**
+- **Redis** (for caching)
 
 ### **Installation**
 
@@ -86,6 +89,33 @@ This project is a cryptocurrency portfolio tracker built using **React**, **Type
    # or
    yarn dev
    ```
+
+4. **Start the backend server**:
+   ```bash
+   npm run start:server
+   # or
+   yarn start:server
+   ```
+
+---
+
+## **Integrating the Frontend with the Backend**
+
+To integrate the backend API with the frontend, follow these steps:
+
+1. **Ensure the backend API is running and accessible**. The backend API endpoints are defined in the controllers such as `src/controllers/marketDataController.ts`, `src/controllers/portfolioController.ts`, and `src/controllers/priceAlertController.ts`.
+
+2. **Use the `axios` library to make HTTP requests to the backend API**. The `axios` instance is already configured in `src/lib/api.ts`.
+
+3. **Use React Query to manage the data fetching and caching**. The `QueryClient` and `QueryClientProvider` are set up in `src/App.tsx`.
+
+4. **Create custom hooks or functions to fetch data from the backend API**. For example, `getTopAssets`, `getAssetHistory`, and `getAssetDetails` are defined in `src/lib/api.ts`.
+
+5. **Use these hooks or functions in your React components to fetch and display data**. For example, the `MarketOverview` component in `src/components/MarketOverview.tsx` uses the `useQuery` hook to fetch global market data.
+
+6. **Handle errors and loading states appropriately in your components**. For example, the `AssetDetails` component in `src/pages/AssetDetails.tsx` shows a loading message while fetching data and displays an error message if the fetch fails.
+
+7. **Ensure the frontend and backend are properly connected by testing the integration and verifying that data is being fetched and displayed correctly**.
 
 ---
 
